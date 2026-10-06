@@ -1,5 +1,11 @@
 # ItaAngularS7
 
+## Vulnerabilities
+
+This repository uses angular v16. Most vulnerabilities are fixed by updating to version 20 or 21, but since it is a class assignment I want to keep v16. No critical vulnerabilities.
+
+## The application
+
 Budget and customer names are validated after losing focus (after first touch).
 
 The "Add" button is not enabled until the required fields are completed and the form is free of errors.

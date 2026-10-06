@@ -1,43 +1,56 @@
 {
-  "name": "ita-angular-s7",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve -c development -o",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "^16.1.0",
-    "@angular/common": "^16.1.0",
-    "@angular/compiler": "^16.1.0",
-    "@angular/core": "^16.1.0",
-    "@angular/forms": "^16.1.0",
-    "@angular/platform-browser": "^16.1.0",
-    "@angular/platform-browser-dynamic": "^16.1.0",
-    "@angular/router": "^16.1.0",
-    "@ng-bootstrap/ng-bootstrap": "^15.1.0",
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.3.1",
-    "bootstrap-icons": "^1.10.5",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^16.1.5",
-    "@angular/cli": "~16.1.5",
-    "@angular/compiler-cli": "^16.1.0",
-    "@angular/localize": "^16.1.0",
-    "@types/jasmine": "~4.3.0",
-    "jasmine-core": "~4.6.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.1.3"
-  }
+    "name": "ita-angular-s7",
+    "version": "1.0.0",
+    "author": {
+        "name": "Manuel García Criado"
+    },
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve -o",
+        "build": "ng build",
+        "build-prod": "ng build --configuration production --base-href /ita-angular-s7/",
+        "watch": "ng build --watch --configuration development",
+        "test": "ng test",
+        "audit:table": "npm audit --json | jq -r '.vulnerabilities | to_entries[] | . as $v | [\"\\(.key)  \\($v.value.range)\", \"Severity: \\($v.value.severity)\", (if $v.value.fixAvailable == false then \"No fix available\" elif $v.value.fixAvailable == true then \"fix available via `npm audit fix`\" else \"fix available via `npm audit fix --force`\\nWill install \\($v.value.fixAvailable.name)@\\($v.value.fixAvailable.version)\\(if $v.value.fixAvailable.isSemVerMajor then \", which is a breaking change\" else \"\" end)\" end)] | .[]'",
+        "deploy": "rm -R /mnt/vps/ita-angular-s7/*; cp -r dist/ita-angular-s7/* /mnt/vps/ita-angular-s7"
+    },
+    "dependencies": {
+        "@angular/animations": "16.2.12",
+        "@angular/common": "16.2.12",
+        "@angular/compiler": "16.2.12",
+        "@angular/core": "16.2.12",
+        "@angular/forms": "16.2.12",
+        "@angular/platform-browser": "16.2.12",
+        "@angular/platform-browser-dynamic": "16.2.12",
+        "@angular/router": "16.2.12",
+        "@ng-bootstrap/ng-bootstrap": "^15.1.0",
+        "@popperjs/core": "^2.11.6",
+        "bootstrap": "^5.3.1",
+        "bootstrap-icons": "^1.10.5",
+        "rxjs": "~7.8.0",
+        "tslib": "^2.3.0",
+        "zone.js": "~0.13.0"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "16.2.12",
+        "@angular/cli": "16.2.12",
+        "@angular/compiler-cli": "16.2.12",
+        "@angular/localize": "16.2.12",
+        "@types/jasmine": "~4.3.0",
+        "jasmine-core": "~4.6.0",
+        "karma": "~6.4.0",
+        "karma-chrome-launcher": "~3.2.0",
+        "karma-coverage": "~2.2.0",
+        "karma-jasmine": "~5.1.0",
+        "karma-jasmine-html-reporter": "~2.1.0",
+        "typescript": "~5.1.3"
+    },
+    "overrides": {
+        "postcss": "8.5.28",
+        "serialize-javascript": "7.1.2",
+        "tar": "7.5.22",
+        "piscina": "4.9.4"
+    }
 }
